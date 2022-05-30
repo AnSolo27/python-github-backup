@@ -1106,12 +1106,15 @@ def fetch_repository(name,
             masked_remote_url,
             local_dir))
         if bare_clone:
+            log_info('bare clone')
             git_command = ['git', 'clone', '--mirror', remote_url, local_dir]
             logging_subprocess(git_command, None)
             if lfs_clone:
+                log_info('bare clone')
                 git_command = ['git', 'lfs', 'fetch', '--all', '--prune']
                 logging_subprocess(git_command, None, cwd=local_dir)
         else:
+            log_info('NOT bare clone')
             if lfs_clone:
                 git_command = ['git', 'lfs', 'clone', remote_url, local_dir]
             else:
