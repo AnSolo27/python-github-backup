@@ -1115,7 +1115,7 @@ def fetch_repository(name,
             if lfs_clone:
                 git_command = ['git', 'lfs', 'clone', remote_url, local_dir]
             else:
-                git_command = ['git', 'clone', remote_url, local_dir]
+                git_command = ['git', 'clone', '--recursive', remote_url, local_dir]
             logging_subprocess(git_command, None)
 
 
